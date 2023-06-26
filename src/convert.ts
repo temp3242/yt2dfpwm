@@ -92,4 +92,8 @@ const main = async (id: string): Promise<Uint8Array> => {
     })
 };
 
+export function checkUrl(id: string) {
+    return ytdl.validateID(id)
+}
+
 export default main;

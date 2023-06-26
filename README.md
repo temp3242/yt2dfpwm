@@ -4,4 +4,4 @@ A converter that downloads a youtube video from a given ID to the DFPWM1a format
 
 ## Request Syntax
 
-`https://<serverurl>/<videoid>`
+`https://<serverurl>/video/<videoid>`
