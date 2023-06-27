@@ -70,9 +70,7 @@ const main = async (id: string): Promise<Uint8Array> => {
     return new Promise((resolve, reject) => {
         const path = process.cwd().concat("/audio/");
         
-        if (!fs.existsSync(path)){
-            fs.mkdirSync(path);
-        }
+        console.log("Got request! ID: ", id);
 
         const stream = ytdl(`https://youtube.com/watch?v=${id}`, { quality: "highestaudio" });
 

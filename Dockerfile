@@ -1,10 +1,15 @@
-FROM node:alpine
+FROM node:alpine AS builder
 WORKDIR /home/user/Code/ts4
 COPY . .
 RUN yarn install
 RUN yarn build
-RUN rm -rf node_modules
-RUN yarn install --production
+
+FROM node:alpine AS final
+WORKDIR /home/user/yt2dfpwm
 RUN apk add  --no-cache ffmpeg
-CMD ["node", "bin/index.js"]
+COPY --from=builder /home/user/Code/ts4/bin/* bin/
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install --production && mkdir audio
+CMD ["yarn", "start"]
 EXPOSE 3000
